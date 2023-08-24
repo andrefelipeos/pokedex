@@ -11,7 +11,7 @@ main h1 {
   margin: 0;
 }
 
-ol.pokemon-list {
+.pokemon-list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -19,17 +19,17 @@ ol.pokemon-list {
   grid-template-columns: 1fr 1fr;
 }
 
-ol.pokemon-list li {
+.pokemon-card {
   margin: .5rem;
   padding: 2rem 1rem;
-  background-color: #14A06F;
+  background-color: #49D0B0;
   color: white;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
 }
 
-ol.pokemon-list li img {
+.pokemon-card .details img {
   max-width: 100%;
   height: 100px;
   align-self: flex-end;
