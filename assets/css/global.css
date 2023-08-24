@@ -60,6 +60,7 @@ main h1 {
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
+  max-width: 225px;
 }
 
 .pokemon-card .number {
