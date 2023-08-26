@@ -1,11 +1,8 @@
-const htmlPokemonList = document.getElementsByClassName("pokemon-list")[0];
+const htmlPokemonListElement = document.getElementsByClassName("pokemon-list")[0];
 
 pokeApi.getPokemonList()
-  .then(pokemonList => {
-    pokemonList.forEach(pokemon => {
-      let htmlListItem = createHtmlPokemonCard(pokemon);
-      htmlPokemonList.innerHTML += htmlListItem;
-    })
+  .then((pokemonList = []) => {
+    htmlPokemonListElement.innerHTML += pokemonList.map(createHtmlPokemonCard).join("");
   });
 
 function createHtmlPokemonCard(pokemon) {
