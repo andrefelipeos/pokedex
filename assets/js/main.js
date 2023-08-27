@@ -9,17 +9,22 @@ function createHtmlPokemonCard(pokemon) {
   return `
     <li class="pokemon-list-item">
       <article class="pokemon-card">
-        <span class="number">#0001</span>
+        <span class="number">#${pokemon.order.toString().padStart(4, '0')}</span>
         <span class="name">${pokemon.name}</span>
         <div class="details">
           <ol class="types">
-            <li class="type">grass</li>
-            <li class="type">poison</li>
+            ${createPokemonTypeHtmlListItems(pokemon.types)}
           </ol>
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
+          <img src="${pokemon.sprites.other.dream_world.front_default}"
             alt="${pokemon.name}">
         </div>
       </article>
     </li>
   `;
+}
+
+function createPokemonTypeHtmlListItems(pokemonTypes) {
+  return pokemonTypes.map(typeSlot => {
+    return `<li class=\"type\">${typeSlot.type.name}</li>`;
+  }).join("");
 }
