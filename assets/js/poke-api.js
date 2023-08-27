@@ -22,6 +22,7 @@ pokeApi.simplifyPokemonDetailsFromApi = pokemonDetails => {
   pokemon.order = pokemonDetails.order;
   pokemon.name = pokemonDetails.name;
   pokemon.types = pokemonDetails.types.map(typeSlot => typeSlot.type.name);
+  pokemon.type = pokemon.types[0];
   pokemon.picture = pokemonDetails.sprites.other.dream_world.front_default;
   return pokemon;
 }
