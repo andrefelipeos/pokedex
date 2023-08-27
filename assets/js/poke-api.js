@@ -11,4 +11,17 @@ pokeApi.getPokemonList = (offset = 0, limit = 10) => {
     .then(pokemonDetailsRequestList => Promise.all(pokemonDetailsRequestList));
 }
 
-pokeApi.getPokemonDetails = pokemon => fetch(pokemon.url).then(response => response.json());
+pokeApi.getPokemonDetails = pokemon => {
+  return fetch(pokemon.url)
+    .then(response => response.json())
+    .then(pokeApi.simplifyPokemonDetailsFromApi);
+}
+
+pokeApi.simplifyPokemonDetailsFromApi = pokemonDetails => {
+  const pokemon = new Pokemon();
+  pokemon.order = pokemonDetails.order;
+  pokemon.name = pokemonDetails.name;
+  pokemon.types = pokemonDetails.types.map(typeSlot => typeSlot.type.name);
+  pokemon.picture = pokemonDetails.sprites.other.dream_world.front_default;
+  return pokemon;
+}
