@@ -19,7 +19,7 @@ pokeApi.getPokemonDetails = pokemon => {
 
 pokeApi.simplifyPokemonDetailsFromApi = pokemonDetails => {
   const pokemon = new Pokemon();
-  pokemon.order = pokemonDetails.order;
+  pokemon.order = pokemonDetails.id;
   pokemon.name = pokemonDetails.name;
   pokemon.types = pokemonDetails.types.map(typeSlot => typeSlot.type.name);
   pokemon.type = pokemon.types[0];
