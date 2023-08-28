@@ -1,9 +1,22 @@
-const htmlPokemonListElement = document.getElementsByClassName("pokemon-list")[0];
+const pokemonListElement = document.getElementsByClassName("pokemon-list")[0];
+const loadMoreButtonElement = document.getElementById("loadMoreButton");
 
-pokeApi.getPokemonList()
-  .then((pokemonList = []) => {
-    htmlPokemonListElement.innerHTML += pokemonList.map(createHtmlPokemonCard).join("");
-  });
+const limit = 20;
+let offset = 0;
+
+loadPokemonCards(offset, limit);
+
+loadMoreButtonElement.addEventListener("click",  () => {
+  offset += limit;
+  loadPokemonCards(offset, limit);
+});
+
+function loadPokemonCards(offset, limit) {
+  pokeApi.getPokemonList(offset, limit)
+    .then((pokemonList = []) => {
+      pokemonListElement.innerHTML += pokemonList.map(createHtmlPokemonCard).join("");
+    });
+}
 
 function createHtmlPokemonCard(pokemon) {
   return `
